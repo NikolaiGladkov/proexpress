@@ -5,5 +5,7 @@ import javafx.event.ActionEvent;
 
 public class MainController {
     DAO dao=new DAO();
-    public void createDb(ActionEvent actionEvent) {dao.createRow( "plot","street","house","housing","floor","door","apartament","other" );}
+    public void createDb(ActionEvent actionEvent) {/*dao.createRow( "plot","street","house","housing","floor","door","apartament","other" );*/
+    /*dao.createTable( "avt" );*/
+    }
 }

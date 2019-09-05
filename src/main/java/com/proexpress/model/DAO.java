@@ -17,8 +17,9 @@ public class DAO {
     Statement stmt=null;
 
 
-public void connectDb(String user, String password){
 
+
+public void connectDb(String user, String password){
 
 }
 
@@ -52,6 +53,5 @@ public void createRow(String plot, String street, String house, String housing, 
         System.out.println( e );
     }
 }
-
 
 }
