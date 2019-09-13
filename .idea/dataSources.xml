@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="proexpress" uuid="6464341b-2a26-49e2-8ded-430ad52260e4">
+    <data-source source="LOCAL" name="proexpress" uuid="8c492ee3-3e32-42c0-ae57-f9154be6045a">
       <driver-ref>h2.unified</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.h2.Driver</jdbc-driver>
-      <jdbc-url>jdbc:h2:$PROJECT_DIR$/../proexpress\src\main\resources/db/proexpress</jdbc-url>
+      <jdbc-url>jdbc:h2:$PROJECT_DIR$/src/main/resources/db\proexpress</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="compare" uuid="bf23f394-d0d5-416f-a0eb-3b7fcab36c73">
+      <driver-ref>h2.unified</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.h2.Driver</jdbc-driver>
+      <jdbc-url>jdbc:h2:$PROJECT_DIR$/src/main\resources\db\compare</jdbc-url>
     </data-source>
   </component>
 </project>

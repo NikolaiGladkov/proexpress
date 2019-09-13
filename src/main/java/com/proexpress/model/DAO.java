@@ -1,11 +1,15 @@
 package com.proexpress.model;
 
+import com.proexpress.controller.MainController;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
 public class DAO {
+    private MainController mainController;
+    public DAO(MainController mainController){this.mainController=mainController;}
     // JDBC driver name and database URL
     static final String JDBC_DRIVER = "org.h2.Driver";
     //static final String DB_URL = "jdbc:h2:~/proexpress";
@@ -46,7 +50,7 @@ public void createRow(String plot, String street, String house, String housing, 
         Class.forName( JDBC_DRIVER );
         conn=DriverManager.getConnection( DB_URL,USER,PASS );
         stmt=conn.createStatement();
-        sql="INSERT INTO avt (plot, street, house,housing,floor,door,apartment,other) VALUES" + " ("+"'"+plot+"'"+","+"'"+street+"'"+","+"'"+house+"'"+","+ "'"+housing+"'"+","+ "'"+floor+"'"+","+ "'"+door+"'"+","+ "'"+apartment+"'"+"," +"'"+other+"')";
+        sql="INSERT INTO SOV (plot, street, house,housing,floor,door,apartment,other) VALUES" + " ("+"'"+plot+"'"+","+"'"+street+"'"+","+"'"+house+"'"+","+ "'"+housing+"'"+","+ "'"+floor+"'"+","+ "'"+door+"'"+","+ "'"+apartment+"'"+"," +"'"+other+"')";
         stmt.executeUpdate( sql );
     }
 
