@@ -111,10 +111,71 @@ public class ParseExcel {
             dao.createRow( arrPlot[i],arrStreet[i],arrHouses[i], arrHousing[i],arrFloor[i],arrDoor[i], arrApartament[i],arrOther[i] );
         }
 
-        //System.out.println( Arrays.toString(  arrStreet ) );
-        //System.out.println( Arrays.toString(  arrHouses ) );
-        //System.out.print(  arrValParseFile.length );
-        //System.out.print(  arrValParseFile[19652].length() );
     }
+
+    public void compareFile  () throws IOException{
+        String[] arrValParseFile;//Массив с результатами парсинга файла
+        String[] arrStreet;String[] arrHouses;   String[] arrHousing; String[] arrApartament;
+        ArrayList<String> arrListStreet=new ArrayList<String>( );
+        ArrayList<String> arrListHouses=new ArrayList<String>( );
+        ArrayList<String> arrListHousing=new ArrayList<String>( );
+        ArrayList<String> arrListAppartament=new ArrayList<String>( );
+
+        ArrayList<String> arrListParseFile=new ArrayList<String>( );//ArrayList с результатами парсинга файла
+
+        // Read XSL file
+        FileInputStream inputStream = new FileInputStream(new File(mainController.filePatch.getText()));
+        // Get the workbook instance for XLS file
+        HSSFWorkbook workbook = new HSSFWorkbook(inputStream);
+        // Get first sheet from the workbook
+        HSSFSheet sheet = workbook.getSheetAt(0);
+        // Get iterator to all the rows in current sheet
+        Iterator<Row> rowIterator = sheet.iterator();
+        while (rowIterator.hasNext()) {
+            Row row = rowIterator.next();
+            // Get iterator to all cells of current row
+            Iterator<Cell> cellIterator = row.cellIterator();
+            while (cellIterator.hasNext()) {
+                Cell cell = cellIterator.next();
+                // Change to getCellType() if using POI 4.x
+                CellType cellType = cell.getCellTypeEnum();
+                switch (cellType) {
+                    case STRING:
+                        arrListParseFile.add( cell.getStringCellValue());
+                        break;
+
+                    case BLANK:
+                        arrListParseFile.add( cell.getStringCellValue());
+                        break;
+
+                    case NUMERIC:
+                        arrListParseFile.add( NumberToTextConverter.toText( cell.getNumericCellValue())) ;
+                        break;
+                }
+
+            }
+        }
+        arrValParseFile=arrListParseFile.toArray(new String[arrListParseFile.size()]);
+
+        for(int i=0;i< arrValParseFile.length;i++){
+            if(arrValParseFile[i].length()>0) {
+                arrListStreet.add( arrValParseFile[i] );//1
+                i = ++i;
+                arrListHouses.add( arrValParseFile[i] );//2
+                i = ++i;
+                arrListHousing.add( arrValParseFile[i] );//3
+                i = ++i;
+                arrListAppartament.add( arrValParseFile[i] );//6
+            }
+        }
+        arrStreet=arrListStreet.toArray(new String[arrListStreet.size()]);
+        arrHouses=arrListHouses.toArray(new String[arrListHouses.size()]);
+        arrHousing=arrListHousing.toArray(new String[arrListHousing.size()]);
+        arrApartament=arrListAppartament.toArray(new String[arrListAppartament.size()]);
+
+        dao.compareTable(/*arrStreet,arrHouses,arrHousing,arrApartament*/);
+    }
+
+    public void testT(){dao.test();}
 
 }

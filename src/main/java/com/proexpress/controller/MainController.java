@@ -30,9 +30,14 @@ public class MainController {
         ObservableList<String> district = FXCollections.observableArrayList("AVT", "KAN", "LEN", "MOS","NIZ","PRI","SOR","SOV");
 districtSelect.setItems( district );
         districtSelect.setValue("AVT");
+
     }
 
     public void chooseFile(ActionEvent actionEvent) { parseExcel.selectFile();}
 
     public void parseFile(ActionEvent actionEvent) throws IOException {parseExcel.parseFile(); }
+
+    public void compareFile(ActionEvent actionEvent) /*throws  IOException*/ {/*parseExcel.compareFile();*/parseExcel.testT(); }
+
+
 }

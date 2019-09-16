@@ -14,6 +14,7 @@ public class DAO {
     static final String JDBC_DRIVER = "org.h2.Driver";
     //static final String DB_URL = "jdbc:h2:~/proexpress";
     static final String DB_URL = "jdbc:h2:C:/Users/Nikolai/IdeaProjects/proexpress\\src\\main\\resources/db/proexpress";
+    static final String DB_URL_COMPARE = "jdbc:h2:C:/Users/Nikolai/IdeaProjects/proexpress/src/main\\resources\\compareDb";
     //  Database credentials
     static final String USER="sa";
     static final String PASS="sa";
@@ -59,4 +60,22 @@ public void createRow(String plot, String street, String house, String housing, 
     }
 }
 
+public void compareTable(/*String [] street, String [] house, String [] housing,String [] apartment*/){
+   // String district=mainController.districtSelect.getValue().toString();
+    System.out.print( "dsdsd" );
+     /*String sql;
+    try{
+       Class.forName( JDBC_DRIVER );
+        conn=DriverManager.getConnection( DB_URL,USER,PASS );
+        stmt=conn.createStatement();
+        sql="SELECT COUNT(*) FROM"+" `"+district+"` ";
+        stmt.executeUpdate( sql );
+        System.out.print( "" );
+    }
+
+    catch (Exception e){
+        System.out.println( e );
+    }*/
+}
+public void test(){System.out.print( "DDDDDD" );}
 }
